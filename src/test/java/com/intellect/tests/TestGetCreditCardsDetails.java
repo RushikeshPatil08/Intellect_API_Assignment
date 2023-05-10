@@ -27,8 +27,6 @@ public class TestGetCreditCardsDetails extends TestBase {
 		Assert.assertEquals(200, response.getStatusCode());
 		Assert.assertTrue(response.getBody().asString() != null);
 		
-		
-//		+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	}
 
 }
