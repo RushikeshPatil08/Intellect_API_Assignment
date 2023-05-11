@@ -4,13 +4,13 @@ Library = Test Ng, Rest Assured
 Language= Java 
 
 //Group Run of all 3 APIs
-To run the 3 API's togetherly run the testng.xml file.
+-To run the 3 API's togetherly run the testng.xml file.
 
 //Run the API seperately.
-TO run the API seperately run the seperate test file of the API.
+-TO run the API seperately run the seperate test file of the API.
 
 Note: 
-We are validating the below parameter
+-We are validating the below parameter
 1. Status code.
 2. Response body should not run.
 3. Json Schema Validaton.
