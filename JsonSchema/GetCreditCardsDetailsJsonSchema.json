@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "uid": {
+      "type": "string"
+    },
+    "credit_card_number": {
+      "type": "string"
+    },
+    "credit_card_expiry_date": {
+      "type": "string"
+    },
+    "credit_card_type": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "uid",
+    "credit_card_number",
+    "credit_card_expiry_date",
+    "credit_card_type"
+  ]
+}

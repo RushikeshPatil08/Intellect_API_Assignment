@@ -5,9 +5,8 @@
     <classes>
       <class name="com.intellect.tests.TestGetUsers">
         <methods>
-          <include name="testGetAccessToken"/>
-          <include name="setEnvironment"/>
           <include name="initialize"/>
+          <include name="testGetUsers"/>
         </methods>
       </class> <!-- com.intellect.tests.TestGetUsers -->
     </classes>
