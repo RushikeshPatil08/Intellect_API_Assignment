@@ -7,7 +7,7 @@ Language= Java
 -To run the 3 API's togetherly run the testng.xml file.
 
 //Run the API seperately.
--TO run the API seperately run the seperate test file of the API.
+-To run the API seperately run the seperate test file of the API.
 
 Note: 
 -We are validating the below parameter
