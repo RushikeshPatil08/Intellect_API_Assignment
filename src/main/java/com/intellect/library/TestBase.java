@@ -42,11 +42,6 @@ public class TestBase {
 	}
 	
 
-	public String[][] getData(String excelFilePath, int sheetNo) throws BiffException, IOException {
-		ExcelReader read = new ExcelReader();
-		String[][] data = read.readExcel(excelFilePath, sheetNo);
-		return data;
-	}
 	
 	public int getCurrentTimestamp()
 	{
