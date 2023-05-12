@@ -6,6 +6,7 @@ import java.io.IOException;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import com.intellect.action.GetAddress;
 import com.intellect.action.GetCreditCardsDetails;
@@ -25,26 +26,29 @@ public class TestGetCreditCardsDetails extends TestBase {
 		GetCreditCardsDetails creditCards = new GetCreditCardsDetails();
 		Response response = creditCards.sendGetCreditCardsDetailsRequest();
 		response.prettyPrint();
+		
+		SoftAssert softAssert=new SoftAssert();
 
 		// Validating the Status code
-		Assert.assertEquals(200, response.getStatusCode());
+		softAssert.assertEquals(200, response.getStatusCode());
 
 		// Validating that response body should not null
-		Assert.assertTrue(response.getBody().asString() != null);
+		softAssert.assertTrue(response.getBody().asString() != null);
 
 		// Validating the Id should not null
-		Assert.assertTrue(response.jsonPath().get("id").toString() != null);
+		softAssert.assertTrue(response.jsonPath().get("id").toString() != null);
 
 		// Validating the credit card number should not null
-		Assert.assertTrue(response.jsonPath().get("credit_card_number").toString() != null);
+		softAssert.assertTrue(response.jsonPath().get("credit_card_number").toString() != null);
 
 		// Validating the credit card number should not null
-		Assert.assertTrue(response.jsonPath().get("credit_card_expiry_date").toString() != null);
+		softAssert.assertTrue(response.jsonPath().get("credit_card_expiry_date").toString() != null);
 
 		// Validating the Json Schema
 		response.then().assertThat().body(
 				JsonSchemaValidator.matchesJsonSchema(new File("./JsonSchema/GetCreditCardsDetailsJsonSchema.json")));
 
+		softAssert.assertAll();
 	}
 
 }
