@@ -6,6 +6,8 @@ import java.io.IOException;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
 import com.intellect.action.*;
 import com.intellect.library.TestBase;
 
@@ -25,24 +27,28 @@ public class TestGetUsers extends TestBase {
 
 		response.prettyPrint();
 
+		SoftAssert softAssert=new SoftAssert();
+		
 		// Validating the Status code
-		Assert.assertEquals(200, response.getStatusCode());
+		softAssert.assertEquals(200, response.getStatusCode());
 
 		// Validating that response body should not null
-		Assert.assertTrue(response.getBody().asString() != null);
+		softAssert.assertTrue(response.getBody().asString() != null);
 
 		// Validating the username should not null
-		Assert.assertTrue(response.jsonPath().get("username").toString() != null);
+		softAssert.assertTrue(response.jsonPath().get("username").toString() != null);
 
 		// Validating the Country should be United States
-		Assert.assertEquals(response.jsonPath().get("address.country"), "United States");
+		softAssert.assertEquals(response.jsonPath().get("address.country"), "United States");
 
 		// Validating that title should not null
-		Assert.assertTrue(response.jsonPath().get("employment.title").toString() != null);
+		softAssert.assertTrue(response.jsonPath().get("employment.title").toString() != null);
 
 		// Validating the Json Schema
 		response.then().assertThat()
 				.body(JsonSchemaValidator.matchesJsonSchema(new File("./JsonSchema/GetUserJsonSchema.json")));
+		
+		softAssert.assertAll();
 	}
 
 }
