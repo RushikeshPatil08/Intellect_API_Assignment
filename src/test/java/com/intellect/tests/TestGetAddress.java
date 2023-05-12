@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -26,21 +27,24 @@ public class TestGetAddress extends TestBase {
 		Response response = address.sendGetAddressRequest();
 		response.prettyPrint();
 
+		SoftAssert softAssert=new SoftAssert();
 		// Validating the Status code
-		Assert.assertEquals(200, response.getStatusCode());
+		softAssert.assertEquals(200, response.getStatusCode());
 
 		// Validating that response body should not null
-		Assert.assertTrue(response.getBody().asString() != null);
+		softAssert.assertTrue(response.getBody().asString() != null);
 
 		// Validating the Id should not null
-		Assert.assertTrue(response.jsonPath().get("id").toString() != null);
+		softAssert.assertTrue(response.jsonPath().get("id").toString() != null);
 
 		// Validating the Full Address should not null
-		Assert.assertTrue(response.jsonPath().get("full_address").toString() != null);
+		softAssert.assertTrue(response.jsonPath().get("full_address").toString() != null);
 
 		// Validating the Json Schema
 		response.then().assertThat()
 				.body(JsonSchemaValidator.matchesJsonSchema(new File("./JsonSchema/GetAddressJsonSchema.json")));
+		
+		softAssert.assertAll();
 	}
 
 }
